@@ -1,0 +1,9 @@
+:host {
+  position: fixed;
+  top: 48px;
+  bottom: 0;
+  width: 8px;
+  cursor: ew-resize;
+  z-index: 1000;
+  transition: all 0.2s;
+}

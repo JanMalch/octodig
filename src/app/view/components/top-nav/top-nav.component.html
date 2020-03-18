@@ -1,0 +1,23 @@
+<mat-toolbar>
+  <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()" *ngIf="isHandset">
+    <mat-icon aria-label="Side nav toggle icon" svgIcon="menu"></mat-icon>
+  </button>
+  <app-opened-files></app-opened-files>
+
+  <div id="actions">
+    <app-rate></app-rate>
+    <a routerLink="/" [queryParams]="repo$ | async" mat-icon-button aria-label="Go to homepage">
+      <mat-icon svgIcon="home-outline"></mat-icon>
+    </a>
+    <ng-container *ngIf="isLoggedIn$ | async; else loginTmpl">
+      <button mat-icon-button (click)="logout()" title="Logout">
+        <mat-icon svgIcon="logout"></mat-icon>
+      </button>
+    </ng-container>
+    <ng-template #loginTmpl>
+      <button mat-icon-button (click)="login()" title="Login">
+        <mat-icon svgIcon="login"></mat-icon>
+      </button>
+    </ng-template>
+  </div>
+</mat-toolbar>

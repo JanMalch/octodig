@@ -1,0 +1,7 @@
+<button *ngIf="rate$ | async as rate" aria-label="Rate limit indicator" mat-icon-button disabled>
+  <mat-icon
+    [svgIcon]="rate.icon"
+    (mouseenter)="onMouseEnter()"
+    [matTooltip]="rate.remaining + ' of ' + rate.limit + ' requests remain. Resets in ' + (rate.reset * 1000 | minsDiff) + ' minutes.'"
+  ></mat-icon>
+</button>

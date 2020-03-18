@@ -1,0 +1,38 @@
+<span>{{ info.path }}</span>
+<span>{{ info.size | formatBytes }}</span>
+
+<div id="footer-actions">
+  <button disabled mat-button>
+    <mat-icon svgIcon="code-tags-check"></mat-icon>
+    Switch Language
+  </button>
+  <a mat-button [href]="info | githubLink" rel="noopener">
+    <mat-icon svgIcon="github-circle"></mat-icon>
+    Open on GitHub</a
+  >
+  <a mat-button [href]="info | rawContentLink" rel="noopener">
+    <mat-icon svgIcon="code-braces"></mat-icon>
+    View raw content</a
+  >
+</div>
+
+<div id="footer-mobile-menu">
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon svgIcon="dots-vertical"></mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button disabled mat-menu-item>
+      <mat-icon svgIcon="code-tags-check"></mat-icon>
+      Switch Language
+    </button>
+    <mat-divider></mat-divider>
+    <a mat-menu-item [href]="info | githubLink" rel="noopener">
+      <mat-icon svgIcon="github-circle"></mat-icon>
+      Open on GitHub</a
+    >
+    <a mat-menu-item [href]="info | rawContentLink" rel="noopener">
+      <mat-icon svgIcon="code-braces"></mat-icon>
+      View raw content</a
+    >
+  </mat-menu>
+</div>

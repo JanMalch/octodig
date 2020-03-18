@@ -1,0 +1,42 @@
+@startuml
+start
+
+:**open?url=/owner/name/type/branch/...path**
+====
+optional step from bookmarklet;
+
+partition OpenRedirect {
+  :redirect to **/v/owner/name/branch?path=...path**;
+}
+
+:url is now **/v/owner/name/branch/filePath**
+or **/v/owner/name/branch?path=...path**
+====
+path parameter is optional;
+note right
+  Secondary entry point from homepage form
+end note
+
+partition RepositoryGuard {
+  if (repository exists) then (no)
+    :redirect to **/?owner&name&branch&error=not-found**;
+    end
+  else (yes)
+  endif
+}
+
+if (PathParam **"filePath"** present?) then (yes)
+else (no)
+  partition InitialFileRedirect {
+    if (QueryParam **"path"** present?) then (yes)
+      :resolve **"path"**;
+    else (no)
+      :resolve path of readme;
+    endif
+    :redirect to **/v/owner/name/branch/filePath**;
+  }
+endif
+
+:route is now **/v/owner/name/branch/filePath**;
+stop
+@enduml

@@ -1,0 +1,37 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="(isHandset$ | async) === false"
+    [style.width.px]="(isHandset$ | async) ? null : width"
+  >
+    <nav *ngIf="repo$ | async as repo">
+      <mat-toolbar>
+        <a
+          [href]="'https://github.com/' + repo.owner + '/' + repo.name + '/tree/' + repo.branch"
+          rel="noopener"
+          title="Open on GitHub"
+          mat-button
+          class="mat-button-nowrap"
+        >
+          {{ repo.owner }}/{{ repo.name }}/{{ repo.branch }}
+          <mat-icon svgIcon="github-circle"></mat-icon>
+        </a>
+      </mat-toolbar>
+      <app-repo-tree [repo]="repo" [tree]="tree$ | async" [rootItems]="rootItems$ | async" (selectFile)="closeOnMobile()"></app-repo-tree>
+    </nav>
+  </mat-sidenav>
+  <mat-sidenav-content [style.margin-left.px]="(isHandset$ | async) ? null : width">
+    <app-top-nav [drawer]="drawer" [isHandset]="isHandset$ | async"></app-top-nav>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<app-drag-sizer
+  *ngIf="(isHandset$ | async) === false"
+  [style.left.px]="width - 2"
+  (dblclick)="autoWidth()"
+  (xPos)="width = $event"
+></app-drag-sizer>

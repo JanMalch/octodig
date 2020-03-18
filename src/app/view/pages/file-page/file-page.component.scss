@@ -1,0 +1,47 @@
+#no-file-opened {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 32px;
+  height: calc(100% - 48px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+
+  img {
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 64px;
+    object-fit: cover;
+  }
+}
+
+:host {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 48px);
+  height: calc(100vh - 48px);
+  min-height: calc(100vh - 48px);
+}
+
+app-file-renderer {
+  overflow: auto;
+}
+
+app-file-renderer,
+#no-file-opened {
+  flex: 1;
+}
+
+/*app-file-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}*/
+
+@media only screen and (max-width: 599px) {
+  #no-file-opened img {
+    margin-bottom: 32px;
+  }
+}

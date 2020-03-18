@@ -1,0 +1,58 @@
+<a routerLink="/" mat-icon-button aria-label="Back to home">
+  <mat-icon svgIcon="arrow-left"></mat-icon>
+</a>
+<h1 class="mat-display-2">About octodig</h1>
+<div>
+  <a href="https://github.com/JanMalch/octodig/blob/master/CHANGELOG.md" rel="noopener">
+    <small>Version {{ version }}</small></a
+  >
+</div>
+<p>
+  octodig is a simple web app that allows you to browse any GitHub repository in an editor look. It supports syntax highlighting for over
+  150 languages, including code folding and more!
+</p>
+<p>
+  octodig is not an editor and you cannot commit files through it. Support for advanced features like resolving imports are out of scope.<br />The
+  goal is to provide you a simple app, to open multiple files at once and keep track of them, without opening a dozen browser tabs.
+</p>
+<p>
+  For bonus convenience add this <a href="https://en.wikipedia.org/wiki/Bookmarklet" rel="noopener" target="_blank">bookmarklet</a> to open
+  the GitHub repository, that you are currently on, here on octodig!
+</p>
+<pre>javascript:window.open("https://octodig.web.app/open?url=" + location.pathname, "_blank");</pre>
+
+<h1 id="languages">Languages</h1>
+
+<details>
+  <summary>octodig supports {{ modeInfo.length }} modes, thanks to <a href="https://codemirror.net/">Codemirror</a>.</summary>
+  <ul>
+    <li *ngFor="let info of languages">
+      {{ info.name }}
+      <span class="mat-hint">&nbsp;&nbsp;&rarr;&nbsp;&nbsp;{{ info.associations }}</span>
+    </li>
+  </ul>
+</details>
+
+<h1 id="how-its-build">How it’s build</h1>
+<p>
+  octodig is completely open source and you can check out <a routerLink="/v/JanMalch/octodig">the full source code</a>.
+  <a href="/3rdpartylicenses.txt">Third-party licenses</a> are available. To find out more you can read the
+  <a href="https://janmalch.github.io/octodig" rel="noopener">project's documentation</a>.
+</p>
+<h2 id="frontend">Frontend</h2>
+<p>
+  The app is built with <a href="http://angular.io/">Angular 9</a> and uses
+  <a href="https://material.angular.io/">@angular/material</a> with
+  <a href="https://materialdesignicons.com">materialdesignicons.com</a> for the UI.
+</p>
+<p>
+  The code highlighting is done with
+  <a href="https://codemirror.net/">Codemirror</a> and rendering markdown is done with
+  <a href="https://www.npmjs.com/package/marked">marked</a>.
+</p>
+<h2 id="authentication">Authentication</h2>
+<p>
+  You can login to have more GitHub requests per hour. This requires an auth provider, which is Google’s
+  <a href="https://firebase.google.com/">Firebase</a> as it also hosts the website. octodig doesn’t store any user data in the database. By
+  clicking the button on the home page you can remove the account and revoke the access for octodig at any time.
+</p>

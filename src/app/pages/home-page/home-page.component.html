@@ -1,0 +1,44 @@
+<div class="container">
+  <main class="acrylic mat-elevation-z8">
+    <h1 class="mat-display-2"><span>Welcome to&nbsp;</span>oct<mat-icon svgIcon="compass" inline></mat-icon>dig</h1>
+    <div>
+      <div id="intro">
+        <p>
+          octodig is a simple web app that allows you to browse any GitHub repository in an editor look. It supports syntax highlighting for
+          over 150 languages, including code folding and more!
+        </p>
+        <p>
+          octodig is not an editor and you cannot commit files through it. Support for advanced features like resolving imports are out of
+          scope.
+        </p>
+        <footer>
+          <a mat-button class="mat-hint" routerLink="/about">About octodig</a>
+          <a mat-button class="mat-hint" routerLink="/v/JanMalch/octodig/master">Source Code</a>
+          <a
+            *ngIf="isLoggedIn$ | async"
+            mat-button
+            class="mat-hint"
+            (click)="deleteUser($event)"
+            href="https://github.com/settings/applications"
+            rel="noopener"
+            >Revoke Access</a
+          >
+        </footer>
+      </div>
+      <div id="actions">
+        <app-repo-form [isLoggedIn]="isLoggedIn$ | async"></app-repo-form>
+
+        <div *ngIf="(isLoggedIn$ | async) !== true">
+          <mat-divider></mat-divider>
+          <div id="login">
+            <span class="mat-hint">Need more than 60 requests per hour?</span>
+            <button mat-stroked-button (click)="login()">
+              <mat-icon svgIcon="github-circle"></mat-icon>
+              LOGIN
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

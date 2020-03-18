@@ -1,0 +1,27 @@
+<img src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/server_down_s4lk.svg" />
+<h1 class="mat-display-1">Rate limit reached!</h1>
+<ng-container *ngIf="!isLoggedIn; else loggedInTmpl">
+  <p>
+    GitHub limits the request rate to {{ rate.limit }} per hour for unauthenticated users.
+    <u>Your quota will refresh in {{ rate.reset * 1000 | minsDiff }} minutes.</u>
+  </p>
+  <small><i>Check the battery icon in the toolbar to track your quota usage.</i></small>
+  <footer>
+    <a routerLink="/login" mat-stroked-button mat-dialog-close>LOGIN</a>
+    <button mat-button mat-dialog-close>CLOSE</button>
+  </footer>
+</ng-container>
+<ng-template #loggedInTmpl>
+  <p>
+    GitHub limits the request rate to {{ rate.limit }} per hour for authenticated users.
+    <u>Your quota will refresh in {{ rate.reset * 1000 | minsDiff }} minutes.</u><br />
+    Please notify me, if you think a bug might've caused this.
+  </p>
+  <small><i>Check the battery icon in the toolbar to track your quota usage.</i></small>
+  <footer>
+    <a href="https://github.com/JanMalch/gix/issues/new" rel="noopener" target="_blank" mat-stroked-button mat-dialog-close>OPEN ISSUE</a>
+    <button mat-button mat-dialog-close>CLOSE</button>
+  </footer>
+</ng-template>
+<!--<p>Your limit is <u>{{ rate.limit }}</u>. It will be refresh at <u>{{ rate.reset * 1000 | date: 'shortTime' }}</u>.
+You can also see the current state with the little battery icon in the toolbar.</p>-->

@@ -1,0 +1,55 @@
+<mat-tree [dataSource]="dataSource" [treeControl]="treeControl" [trackBy]="trackBy">
+  <mat-tree-node
+    *matTreeNodeDef="let node; when: hasChild"
+    matTreeNodePadding
+    matTreeNodeToggle
+    [id]="'toggle-' + (node.item | itemInfoBySha: 'path')"
+    [attr.aria-label]="'toggle ' + (node.item | itemInfoBySha: 'path')"
+  >
+    <button mat-icon-button [attr.aria-labelledby]="'toggle-' + (node.item | itemInfoBySha: 'path')">
+      <mat-icon class="mat-icon-rtl-mirror" [svgIcon]="treeControl.isExpanded(node) ? 'chevron-down' : 'chevron-right'"> </mat-icon>
+    </button>
+    {{ node.item | itemInfoBySha }}
+  </mat-tree-node>
+
+  <mat-tree-node
+    *matTreeNodeDef="let node"
+    matTreeNodePadding
+    [routerLink]="repoLinkPrefix + node.item"
+    routerLinkActive
+    #rla="routerLinkActive"
+    [class.active-outline]="rla.isActive"
+    (click)="selectFile.emit(node)"
+    role="link"
+    [id]="'open-' + (node.item | itemInfoBySha: 'path')"
+    [attr.aria-label]="'open ' + (node.item | itemInfoBySha: 'path')"
+  >
+    <button
+      mat-icon-button
+      [attr.aria-labelledby]="'open-' + (node.item | itemInfoBySha: 'path')"
+      [disabled]="!rla.isActive"
+      [color]="rla.isActive ? 'accent' : undefined"
+    >
+      <mat-icon svgIcon="file-outline"></mat-icon>
+    </button>
+    {{ node.item | itemInfoBySha }}
+  </mat-tree-node>
+</mat-tree>
+
+<!-- TODO: not needed anymore? -->
+<div aria-hidden="true" *ngIf="!tree || tree.size === 0">
+  <div class="animated-background"></div>
+  <div class="animated-background"></div>
+  <div class="animated-background"></div>
+  <div class="animated-background"></div>
+  <div class="animated-background"></div>
+  <div class="animated-background"></div>
+  <div class="animated-background"></div>
+  <div class="animated-background"></div>
+  <div class="animated-background"></div>
+  <div class="animated-background"></div>
+  <div class="animated-background"></div>
+  <div class="animated-background"></div>
+  <div class="animated-background"></div>
+  <div class="animated-background"></div>
+</div>

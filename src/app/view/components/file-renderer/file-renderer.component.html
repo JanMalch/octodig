@@ -1,0 +1,17 @@
+<app-codemirror
+  #CodeMirror
+  [hidden]="renderer !== 'codemirror' || !value"
+  (cdkObserveContent)="codemirrorChanged()"
+  [ngModel]="renderer === 'codemirror' ? value : ''"
+  [options]="options"
+></app-codemirror>
+
+<ng-container [ngSwitch]="renderer">
+  <markdown *ngSwitchCase="'marked'" [data]="value" (ready)="onMarkdownReady(md)" #md></markdown>
+  <div *ngSwitchCase="'image'" id="image-host">
+    <img [src]="value" />
+  </div>
+  <div *ngSwitchCase="'table'">
+    Table!
+  </div>
+</ng-container>

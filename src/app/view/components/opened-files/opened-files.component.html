@@ -1,0 +1,52 @@
+<ng-container *ngIf="files.length > 0">
+  <nav mat-tab-nav-bar color="accent">
+    <a
+      mat-tab-link
+      *ngFor="let file of files"
+      [routerLink]="baseLink + file"
+      routerLinkActive
+      #rla="routerLinkActive"
+      [active]="rla.isActive"
+    >
+      {{ file | itemInfoBySha }}
+      <mat-progress-spinner
+        *ngIf="rla.isActive && (content.loadingFile$ | async); else closeTmpl"
+        color="accent"
+        mode="indeterminate"
+        diameter="20"
+      ></mat-progress-spinner>
+      <ng-template #closeTmpl>
+        <button
+          mat-icon-button
+          color="accent"
+          aria-label="Close file"
+          (click)="$event.preventDefault(); $event.stopImmediatePropagation(); close(file)"
+        >
+          <mat-icon svgIcon="close"></mat-icon>
+        </button>
+      </ng-template>
+    </a>
+  </nav>
+
+  <button id="file-menu-btn" mat-flat-button color="accent" [matMenuTriggerFor]="menu">
+    <mat-icon svgIcon="file-multiple"></mat-icon>
+    <span>{{ files.length }}</span>
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="closeAll()">
+      <mat-icon svgIcon="close-box-multiple-outline" color="warn"></mat-icon>
+      Close all
+    </button>
+    <mat-divider></mat-divider>
+    <a
+      *ngFor="let file of files"
+      [routerLink]="baseLink + file"
+      mat-menu-item
+      routerLinkActive
+      #rla="routerLinkActive"
+      [class.active]="rla.isActive"
+      >{{ file | itemInfoBySha: 'path' }}</a
+    >
+  </mat-menu>
+</ng-container>

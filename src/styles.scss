@@ -1,0 +1,307 @@
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$octodig-primary: mat-palette($mat-indigo);
+$octodig-accent: mat-palette($mat-pink, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$octodig-warn: mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$octodig-theme: mat-dark-theme($octodig-primary, $octodig-accent, $octodig-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($octodig-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  // font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+}
+
+@import '~codemirror/lib/codemirror';
+@import '~codemirror/theme/darcula.css';
+@import '~codemirror/addon/fold/foldgutter.css';
+
+@mixin scrollbar {
+  &::-webkit- {
+    &scrollbar {
+      height: 8px;
+      width: 8px;
+    }
+
+    &scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.26);
+    }
+
+    &scrollbar-corner {
+      background: 0 0;
+    }
+  }
+}
+
+.CodeMirror {
+  height: 100%;
+  user-select: text;
+
+  &-hscrollbar,
+  &-vscrollbar {
+    outline: none;
+    @include scrollbar;
+  }
+
+  &-scrollbar-filler {
+    background-color: transparent;
+  }
+
+  &-gutter-background.CodeMirror-activeline-gutter {
+    background: rgba(255, 255, 255, 0.03);
+  }
+
+  &-activeline-background.CodeMirror-linebackground {
+    background: rgba(255, 255, 255, 0.03);
+  }
+}
+
+app-file-renderer,
+markdown {
+  @include scrollbar;
+}
+
+.CodeMirror-foldmarker {
+  color: rgba(#fff, 0.74);
+  text-shadow: none;
+  display: inline-block;
+  background-color: rgba(#fff, 0.15);
+  height: 17px;
+  line-height: 14px;
+  padding: 0 4px;
+  margin: 0 4px;
+  transition: background-color 0.2s;
+  border-radius: 2px;
+
+  &:hover {
+    background: hsla(0, 0%, 100%, 0.35);
+  }
+}
+
+.cm-s-darcula span.cm-tag {
+  text-decoration: none;
+}
+
+.cm-s-darcula span.cm-def {
+  color: #ffc66d;
+  font-style: normal;
+}
+
+b,
+strong {
+  font-weight: 500;
+}
+
+body.mat-typography p {
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.mat-button-nowrap .mat-button-wrapper {
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+app-about,
+markdown {
+  user-select: text;
+
+  code,
+  tt,
+  pre {
+    background: #222;
+    border-radius: 3px;
+  }
+
+  pre {
+    border: 1px solid rgba(#fff, 0.12);
+    padding: 8px;
+    color: rgba(#fff, 0.7);
+    overflow: auto;
+
+    &::-webkit- {
+      &scrollbar {
+        height: 8px;
+        width: 8px;
+      }
+
+      &scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.26);
+      }
+
+      &scrollbar-corner {
+        background: 0 0;
+      }
+    }
+  }
+
+  a {
+    text-decoration: none;
+    // color: #ff4081; // not accessible
+    color: #ff5c95;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  b,
+  strong {
+    font-weight: 500;
+  }
+
+  ul {
+    font-size: 16px;
+    line-height: 1.65;
+  }
+
+  hr {
+    border: none;
+    border-top: 1px solid rgba(#fff, 0.12);
+    margin: 8px 0;
+  }
+
+  blockquote {
+    border-left: 4px solid #ff4081;
+    margin: 4px 0;
+    padding-left: 1em;
+    color: rgba(#fff, 0.8);
+  }
+
+  *:not(pre) {
+    > code,
+    > tt {
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.2em 0.4em;
+    }
+  }
+
+  h1,
+  h2 {
+    padding-bottom: 0.3em;
+    border-bottom: 1px solid rgba(#fff, 0.12);
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  h2 {
+    font-size: 1.5em;
+  }
+
+  h3 {
+    font-size: 1.25em;
+  }
+
+  h4 {
+    font-size: 1em;
+  }
+
+  h5 {
+    font-size: 0.875em;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 24px;
+    margin-bottom: 16px;
+    font-weight: 500;
+    line-height: 1.25;
+  }
+
+  table {
+    border-collapse: collapse;
+    border: 1px solid #484b4d;
+    margin-bottom: 16px;
+
+    tr {
+      text-align: left;
+      height: 40px;
+    }
+
+    th {
+      padding: 0 16px;
+      border-right: 1px solid #484b4d;
+      font-weight: 500;
+      text-align: center;
+
+      &:empty {
+        display: none;
+      }
+    }
+
+    td {
+      border-top: 1px solid #484b4d;
+      padding: 8px 16px;
+      border-right: 1px solid #484b4d;
+      line-height: 1.5;
+    }
+  }
+}
+
+/* custom mdi extensions */
+
+.mat-icon.mat-card-avatar svg {
+  transform: scale(calc(40 / 24));
+  transform-origin: left top;
+}
+
+.mat-icon[matprefix] {
+  margin-right: 12px;
+}
+
+.mat-menu-item .mat-icon {
+  margin: 0 8px 0 0;
+}
+
+.mat-icon[svgIcon='loading'],
+.mdi-spin {
+  animation: mdi-spin 2s infinite linear;
+}
+
+@keyframes mdi-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}

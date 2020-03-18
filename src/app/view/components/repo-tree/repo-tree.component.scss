@@ -1,0 +1,81 @@
+:host {
+  display: inline-block;
+  padding: 8px 8px 25vh;
+  white-space: nowrap;
+  min-width: calc(100% - 16px);
+  min-height: calc(100vh - 48px);
+  overflow: auto;
+  box-sizing: border-box;
+
+  &::-webkit- {
+    &scrollbar {
+      height: 8px;
+      width: 8px;
+    }
+
+    &scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.26);
+    }
+
+    &scrollbar-corner {
+      background: 0 0;
+    }
+  }
+}
+
+.mat-tree {
+  display: inline-block;
+  min-width: 100%;
+}
+
+.mat-tree-node {
+  font-weight: 400;
+  font-size: 14px;
+  color: inherit;
+  transition: background 0.22s;
+  cursor: pointer;
+  border-radius: 2px;
+  min-height: 32px !important;
+  padding-right: 16px;
+  outline: none;
+  border: 1px solid transparent;
+
+  &:hover {
+    background-color: rgba(#fff, 0.1);
+  }
+}
+
+.active-outline {
+  background-color: rgba(#fff, 0.05);
+  border: 1px solid rgba(#fff, 0.15);
+}
+
+// Animation
+@keyframes placeHolderShimmer {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+.animated-background {
+  animation-duration: 1.5s;
+  animation-fill-mode: forwards;
+  animation-iteration-count: infinite;
+  animation-name: placeHolderShimmer;
+  animation-timing-function: linear;
+  background: #888;
+  background: linear-gradient(to right, #999 8%, #777 18%, #999 33%);
+  background-size: 800px 104px;
+  position: relative;
+  border-radius: 2px;
+  margin: 20px 12px;
+  height: 20px;
+  width: calc(100% - 24px);
+
+  &:last-child {
+    width: 60%;
+  }
+}

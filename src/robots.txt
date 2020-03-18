@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Allow: /about
+Disallow: /open
+Disallow: /v
+Disallow: /assets

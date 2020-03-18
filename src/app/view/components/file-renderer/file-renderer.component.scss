@@ -1,0 +1,21 @@
+/*:host {
+  height: calc(100% - 48px);
+}*/
+
+markdown {
+  display: block;
+  padding: 32px;
+}
+
+#image-host {
+  height: calc(100% - 48px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#image-host img {
+  background-color: #fafafa;
+  object-fit: contain;
+  max-width: 90%;
+}

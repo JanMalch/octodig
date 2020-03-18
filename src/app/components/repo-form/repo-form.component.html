@@ -1,0 +1,21 @@
+<form [formGroup]="repoForm" (ngSubmit)="onSubmit()">
+  <mat-form-field appearance="outline" color="accent">
+    <input matInput placeholder="Any GitHub user" formControlName="owner" />
+    <mat-label>Owner</mat-label>
+  </mat-form-field>
+  <mat-form-field appearance="outline" color="accent">
+    <input matInput placeholder="Type ahead ..." formControlName="name" />
+    <mat-label>Name</mat-label>
+  </mat-form-field>
+  <mat-form-field appearance="outline" color="accent">
+    <input matInput placeholder="Branch or commit" formControlName="branch" />
+    <mat-label>Branch</mat-label>
+  </mat-form-field>
+  <div id="repo-actions">
+    <div><!-- TODO: put error messages --></div>
+    <button mat-flat-button [disabled]="repoForm.invalid || loading" color="primary" type="submit" matRipple matRippleUnbounded>
+      <mat-icon [svgIcon]="loading ? 'loading' : 'compass'" [class.mdi-spin]="loading"></mat-icon>
+      START DIGGING
+    </button>
+  </div>
+</form>

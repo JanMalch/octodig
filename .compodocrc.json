@@ -1,0 +1,12 @@
+{
+  "$schema": "./node_modules/@compodoc/compodoc/src/config/schema.json",
+  "assetsFolder": "docs/assets",
+  "customFavicon": "./src/favicon.ico",
+  "exportFormat": "html",
+  "extTheme": "./docs/assets/css/",
+  "includes": "docs",
+  "minimal": false,
+  "output": "./dist/docs",
+  "tsconfig": "./tsconfig.json",
+  "// unitTestCoverage": "coverage/coverage-summary.json"
+}

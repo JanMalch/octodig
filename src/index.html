@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>octodig</title>
+    <base href="/" />
+
+    <meta name="Description" content="octodig helps you dig into a GitHub repository in an editor look." />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="application-name" content="octodig" />
+    <meta name="version" content="0.0.1" />
+    <meta name="theme-color" content="#303030" />
+    <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary" />
+
+    <!-- Open Graph data -->
+    <meta property="og:title" content="octodig" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://octodig.web.app/" />
+    <meta property="og:image" content="https://octodig.web.app/assets/icons/icon-512x512.png" />
+    <meta property="og:description" content="octodig helps you dig into a GitHub repository in an editor look." />
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="preload" href="assets/mdi.svg" as="image" />
+    <link rel="dns-prefetch" href="https://api.github.com" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet" />
+    <script async src="/assets/js/codemirror.js" onload="CodeMirror.modeURL='/assets/modes/%N/%N.js'"></script>
+  </head>
+  <body class="mat-app-background mat-typography">
+    <noscript>
+      <main style="text-align:center;padding-top: 2em;">
+        <h1 class="mat-display-2" style="margin-bottom: 16px;">octodig</h1>
+        <p>Please enable JavaScript to use octodig.</p>
+        <a
+          href="https://github.com/JanMalch/octodig"
+          rel="noopener"
+          class="mat-raised-button mat-hint mat-button-base"
+          style="background:#ffffff14;padding:8px 16px;border-radius:4px;text-decoration:none;margin-top:8px;display:inline-block;letter-spacing:0.2px;"
+          >SOURCE CODE</a
+        >
+      </main>
+    </noscript>
+    <app-root></app-root>
+  </body>
+</html>
