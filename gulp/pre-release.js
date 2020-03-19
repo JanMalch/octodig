@@ -22,7 +22,7 @@ function determineNextVersion() {
 
 function updateIndexWithVersion() {
   return src('src/index.html')
-    .pipe(replace(/<meta name="version" content=".+?" \/>/g, `<meta name="version" content="xy${nextVersion}" />`))
+    .pipe(replace(/<meta name="version" content=".+?" \/>/g, `<meta name="version" content="${nextVersion}" />`))
     .pipe(dest('src/'));
 }
 
