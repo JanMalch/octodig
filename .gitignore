@@ -49,6 +49,7 @@ Thumbs.db
 /src/assets/js/
 
 /.idea/
+*.iml
 
 # Firebase
 firebase-debug.log
