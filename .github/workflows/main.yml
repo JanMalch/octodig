@@ -19,8 +19,5 @@ jobs:
       run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
     - run: npm install
     - run: npm run build
-    - uses: w9jds/firebase-action@master
-      with:
-        args: 'deploy -m "release: ${{ steps.determine_version.outputs.VERSION }}"'
-      env:
-        FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+    - name: deploy to firebase
+      run: 'npx firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }} -m "release: ${{ steps.determine_version.outputs.VERSION }}"'
