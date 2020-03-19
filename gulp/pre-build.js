@@ -1,8 +1,6 @@
 const { src, dest, parallel } = require('gulp');
 const concat = require('gulp-concat');
 const uglify = require('gulp-uglify');
-const replace = require('gulp-replace');
-const pkgJson = require('../package');
 
 function createLibFile() {
   return src([
@@ -35,12 +33,6 @@ function copyModes() {
     .pipe(dest('src/assets/modes'));
 }
 
-function updateIndexWithVersion() {
-  return src('src/index.html')
-    .pipe(replace(/<meta name="version" content=".+?"\/>/g, `<meta name="version" content="${pkgJson.version}"/>`))
-    .pipe(dest('src/'));
-}
-
-exports.preBuild = parallel(updateIndexWithVersion, createLibFile, copyModes);
+exports.preBuild = parallel(createLibFile, copyModes);
 
 // marked is bundled in angular.json because it's just 24kb uncompressed

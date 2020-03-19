@@ -7,7 +7,7 @@
     "ng": "ng",
     "prestart": "gulp",
     "start": "ng serve",
-    "prebuild": "gulp",
+    "prebuild": "gulp preBuild",
     "build": "ng build --prod",
     "postbuild": "gulp stripMdi",
     "test": "ng test",
@@ -15,6 +15,7 @@
     "e2e": "ng e2e",
     "prettier": "prettier --write src/**/*.{ts,html,css,scss,md,yaml,yml}",
     "release": "standard-version",
+    "postrelease": "gulp postRelease && git add src/index.html && git commit --amend --no-edit",
     "// - DOCS & TOOLS": "exit -1",
     "preanalyze": "ng build --prod --namedChunks=true --stats-json",
     "analyze": "npx webpack-bundle-analyzer dist/octodig/stats-es2015.json",
@@ -106,7 +107,6 @@
   },
   "standard-version": {
     "$schema": "http://json-schema.org/draft-07/schema#",
-    "header": "",
     "types": [
       {
         "type": "feat",
