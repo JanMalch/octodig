@@ -10,8 +10,6 @@
     "prebuild": "gulp",
     "build": "ng build --prod",
     "postbuild": "gulp stripMdi",
-    "predeploy": "npm run build",
-    "deploy": "firebase deploy",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
