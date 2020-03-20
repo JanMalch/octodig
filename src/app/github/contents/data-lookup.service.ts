@@ -28,25 +28,6 @@ export interface FileItem extends ContentItem {
   content: string;
 }
 
-export interface DirItem extends ContentItem {
-  type: 'tree';
-  // TODO: what else?
-}
-
-export function isFileItem(value: any): value is FileItem {
-  if (value == null || typeof value !== 'object') {
-    return false;
-  }
-  return value.type === 'file';
-}
-
-export function isDirItem(value: any): value is DirItem {
-  if (value == null || typeof value !== 'object') {
-    return false;
-  }
-  return value.type === 'dir';
-}
-
 @Injectable({
   providedIn: 'root'
 })
