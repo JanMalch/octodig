@@ -1,0 +1,23 @@
+name: Deploy on Firebase
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  firebase-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@master
+        with:
+          node-version: '10.x'
+      - name: determine version
+        id: determine_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//}
+      - run: npm install
+      - run: npm run build
+      - name: deploy to firebase
+        run: 'npx firebase deploy --only hosting --token ${{ secrets.FIREBASE_TOKEN }} -m "release: ${{ steps.determine_version.outputs.VERSION }}"'
