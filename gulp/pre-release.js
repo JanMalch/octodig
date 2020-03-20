@@ -8,7 +8,7 @@ let nextVersion;
 function determineNextVersion() {
   return exec('npx standard-version --dry-run').then(result => {
     const str = result.stdout;
-    const regex = /tagging release (v.+)/m;
+    const regex = /tagging release v(.+)/m;
     let m;
 
     if ((m = regex.exec(str)) !== null) {
