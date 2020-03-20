@@ -54,38 +54,50 @@ function treeify(items: TreeItem[]): TreeifyResult {
   const pathLookup = new Map<string, string>();
   const rootItems: string[] = [];
   const collectableData = items.map(item => {
+    const { id, isRoot, name, parentPath } = extractItemData(item);
     const knownAsParent = tree.get(item.path);
-    if (knownAsParent) {
-      tree.set(fileId(item), knownAsParent);
+    if (knownAsParent != null) {
+      tree.set(id, knownAsParent);
       tree.delete(item.path);
     }
-    pathLookup.set(item.path, fileId(item));
-    const segments = item.path.split('/');
-    const rootItem = segments.length === 1;
-    if (rootItem && !tree.has(fileId(item))) {
-      tree.set(fileId(item), item.type === 'blob' ? undefined : []);
-      rootItems.push(fileId(item));
+    pathLookup.set(item.path, id);
+    if (isRoot && !tree.has(id)) {
+      tree.set(id, item.type === 'blob' ? undefined : []);
+      rootItems.push(id);
       return { ...item, name: item.path };
     }
-    const name = segments.pop(); // segments now contains parent path!
-    const parentPath = segments.join('/');
     const parentSha = pathLookup.get(parentPath);
-    if (!parentSha) {
-      const result = tree.get(parentPath);
-      if (!result) {
-        tree.set(parentPath, [fileId(item)]);
-      } else {
-        tree.set(parentPath, [...result, fileId(item)]);
-      }
-    } else {
-      const result = tree.get(parentSha);
-      if (!result) {
-        tree.set(parentSha, [fileId(item)]);
-      } else {
-        tree.set(parentSha, [...result, fileId(item)]);
-      }
-    }
+    addToGroup(tree, parentSha != null ? parentSha : parentPath, id);
     return { ...item, name };
   });
   return { tree, collectableData, rootItems };
+}
+
+function extractItemData(item: TreeItem) {
+  const id = fileId(item);
+  const segments = item.path.split('/');
+  const isRoot = segments.length === 1;
+  const name = segments.pop(); // segments now contains parent path!
+  const parentPath = segments.join('/');
+  return {
+    id,
+    isRoot,
+    name,
+    parentPath
+  };
+}
+
+/**
+ * Adds the given value to an array associated with the given key.
+ * @param map the map collecting all groups
+ * @param key a group key
+ * @param value a value for the group
+ */
+function addToGroup<K, V>(map: Map<K, V[]>, key: K, value: V) {
+  const result = map.get(key);
+  if (!result) {
+    map.set(key, [value]);
+  } else {
+    map.set(key, [...result, value]);
+  }
 }
