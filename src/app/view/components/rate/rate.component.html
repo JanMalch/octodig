@@ -2,6 +2,8 @@
   <mat-icon
     [svgIcon]="rate.icon"
     (mouseenter)="onMouseEnter()"
+    (click)="tt.show()"
+    #tt="matTooltip"
     [matTooltip]="rate.remaining + ' of ' + rate.limit + ' requests remain. Resets in ' + (rate.reset * 1000 | minsDiff) + ' minutes.'"
   ></mat-icon>
 </button>
