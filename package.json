@@ -5,7 +5,7 @@
   "author": "JanMalch",
   "scripts": {
     "ng": "ng",
-    "prestart": "gulp",
+    "prestart": "gulp preBuild",
     "start": "ng serve",
     "prebuild": "gulp preBuild",
     "build": "ng build --prod",
