@@ -1,6 +1,5 @@
 import { coerceArray } from '@angular/cdk/coercion';
 import { Injectable } from '@angular/core';
-import { ViewModule } from '../../view/view.module';
 import { StateService } from '../state.service';
 import { fileId } from './functions';
 
@@ -57,10 +56,6 @@ export class DataLookupService {
     if (!value) {
       return;
     }
-    coerceArray(value).forEach(v => {
-      if (v.hasOwnProperty('sha')) {
-        this.add(v);
-      }
-    });
+    coerceArray(value).forEach(v => this.add(v));
   }
 }
