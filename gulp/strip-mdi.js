@@ -1,13 +1,11 @@
 const chalk = require('chalk');
-const path = require('path');
 const log = require('fancy-log');
 const { src, dest } = require('gulp');
 const debug = require('gulp-debug');
-const { parseSync, stringify } = require('svgson');
+const svgson = require('svgson');
 const through = require('through2');
 
 const staticallyUsedIcons = [];
-const componentsWithDynamicUsages = new Set();
 
 function findUsages(regex, vinylFile, callback) {
   const transformedFile = vinylFile.clone();
@@ -26,46 +24,22 @@ function findUsages(regex, vinylFile, callback) {
 
 function findMatIcons() {
   return through.obj((vinylFile, encoding, callback) => {
-    // static usages
     findUsages(/<mat-icon .*?svgIcon="(.+?)".*?>/gim, vinylFile, m => staticallyUsedIcons.push(m[1]));
-
-    // dynamic usages
-    findUsages(/<mat-icon .*?\[svgIcon]="(.+?)".*?>/gim, vinylFile, m => {
-      const fileName = path.relative(__dirname + '/..', vinylFile.path);
-      if (!componentsWithDynamicUsages.has(fileName)) {
-        log(chalk.yellow(`${fileName} uses a dynamic mat-icon: ${m[0]}`));
-        componentsWithDynamicUsages.add(fileName);
-      }
-    });
-
     callback(null);
   });
 }
 
+const _logResult = allIcons => {
+  const total = allIcons.length;
+  const pct = '(' + ((staticallyUsedIcons.length * 100) / total).toFixed(2) + '%)';
+  log(`Keeping ${staticallyUsedIcons.length} of ${total} icons ${chalk.greenBright(pct)}`);
+};
+
 function stripSvg(keepIcons) {
   return through.obj((vinylFile, encoding, callback) => {
-    if (Array.isArray(keepIcons)) {
-      keepIcons.forEach(icon => staticallyUsedIcons.push(icon));
-    } else if (typeof keepIcons === 'object' && !!keepIcons) {
-      const givenFiles = Object.values(keepIcons)
-        .flat()
-        .map(file => path.relative(__dirname + '/..', path.resolve(file)));
-
-      const givenFilesButNotFound = givenFiles.filter(fileName => !componentsWithDynamicUsages.has(fileName));
-      if (givenFilesButNotFound.length > 0) {
-        log.error('Files passed to stripSvg do not have dynamic usages:\n- ' + Array.from(new Set(givenFilesButNotFound)).join('\n- '));
-      }
-
-      const foundFilesButNotGiven = Array.from(componentsWithDynamicUsages).filter(comp => !givenFiles.includes(comp));
-      if (foundFilesButNotGiven.length > 0) {
-        log.error('Found files with dynamic usages that are not listed:\n- ' + Array.from(new Set(foundFilesButNotGiven)).join('\n- '));
-      }
-
-      Object.keys(keepIcons).forEach(icon => staticallyUsedIcons.push(icon));
-    }
-
+    keepIcons.forEach(icon => staticallyUsedIcons.push(icon));
     const transformedFile = vinylFile.clone();
-    const parsed = parseSync(transformedFile.contents.toString('utf8'));
+    const parsed = svgson.parseSync(transformedFile.contents.toString('utf8'));
     const allIcons = parsed.children[0].children;
     const keptIcons = allIcons.filter(icon => staticallyUsedIcons.includes(icon.attributes.id));
     const newIconFile = {
@@ -77,10 +51,8 @@ function stripSvg(keepIcons) {
         }
       ]
     };
-    const total = allIcons.length;
-    const pct = '(' + ((staticallyUsedIcons.length * 100) / total).toFixed(2) + '%)';
-    log(`Keeping ${staticallyUsedIcons.length} of ${total} icons ${chalk.greenBright(pct)}`);
-    transformedFile.contents = Buffer.from(stringify(newIconFile));
+    _logResult(allIcons);
+    transformedFile.contents = Buffer.from(svgson.stringify(newIconFile));
     callback(null, transformedFile);
   });
 }
