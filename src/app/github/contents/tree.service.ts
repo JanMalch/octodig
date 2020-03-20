@@ -89,15 +89,15 @@ function extractItemData(item: TreeItem) {
 
 /**
  * Adds the given value to an array associated with the given key.
- * @param map the map collecting all groups
+ * @param groupMap the map collecting all groups
  * @param key a group key
  * @param value a value for the group
  */
-function addToGroup<K, V>(map: Map<K, V[]>, key: K, value: V) {
-  const result = map.get(key);
+function addToGroup<K, V>(groupMap: Map<K, V[]>, key: K, value: V) {
+  const result = groupMap.get(key);
   if (!result) {
-    map.set(key, [value]);
+    groupMap.set(key, [value]);
   } else {
-    map.set(key, [...result, value]);
+    groupMap.set(key, [...result, value]);
   }
 }

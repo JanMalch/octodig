@@ -8,9 +8,9 @@ export class FormatBytesPipe implements PipeTransform {
   readonly k = 1024;
 
   /**
-   *
-   * @param bytes
-   * @param decimals
+   * Transforms the given bytes in a human readable string.
+   * @param bytes the byte count
+   * @param decimals desired decimal places
    * @author https://stackoverflow.com/a/18650828
    */
   transform(bytes: number, decimals: number = 2): string {
