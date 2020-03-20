@@ -1,6 +1,6 @@
 {
   "name": "octodig",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "octodig helps you dig into a GitHub repository in an editor look.",
   "author": "JanMalch",
   "scripts": {

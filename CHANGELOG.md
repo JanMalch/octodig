@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.8](https://github.com/JanMalch/octodig/compare/v0.0.7...v0.0.8) (2020-03-20)
+
+### Features
+
+- show rate tooltip on click ([3bf5fd6](https://github.com/JanMalch/octodig/commit/3bf5fd69c8cedeaf2b0d2af9a10ca235027f6d8c))
+
+### Code Refactoring
+
+- reduce complexity ([5698a0c](https://github.com/JanMalch/octodig/commit/5698a0c84215f470c9ca87a70ad5ee891ce649ab))
+
 ### [0.0.7](https://github.com/JanMalch/octodig/compare/v0.0.6...v0.0.7) (2020-03-19)
 
 ### [0.0.6](https://github.com/JanMalch/octodig/compare/v0.0.4...v0.0.6) (2020-03-19)
