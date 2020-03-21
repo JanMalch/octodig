@@ -107,6 +107,7 @@ export class CodemirrorComponent implements AfterViewInit, OnDestroy, ControlVal
         this._ngZone.run(() => this.codemirrorValueChanged(cm, change))
       );
       this.codeMirror.setValue(this.value);
+      this.codeMirror.refresh();
     });
   }
   ngDoCheck() {
