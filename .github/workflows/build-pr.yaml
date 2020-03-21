@@ -6,7 +6,7 @@ on:
       - master
 
 jobs:
-  firebase-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,5 +16,5 @@ jobs:
           node-version: '10.x'
       - run: npm install
       - run: npm run build
-      - run: npm lint
+      - run: npm run lint
       - run: npm test
