@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.11](https://github.com/JanMalch/octodig/compare/v0.0.10...v0.0.11) (2020-03-22)
+
+### Bug Fixes
+
+- add missing icons ([f4f8ae8](https://github.com/JanMalch/octodig/commit/f4f8ae8d263ae41203a7dc58dd613da9158db828))
+
 ### [0.0.10](https://github.com/JanMalch/octodig/compare/v0.0.9...v0.0.10) (2020-03-22)
 
 ### Features
