@@ -21,7 +21,7 @@ export class FileFooterComponent implements OnInit {
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(map(result => result.matches));
 
-  isShareSupported = 'share' in navigator;
+  isShareSupported = !!(navigator as any).share;
 
   constructor(private breakpointObserver: BreakpointObserver, private dialog: MatDialog, private state: StateService) {}
 
