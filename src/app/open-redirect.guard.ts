@@ -10,7 +10,6 @@ export class OpenRedirectGuard implements CanActivate {
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<UrlTree> {
     const [, owner, name, type, branch, ...remainder] = next.queryParamMap.get('url').split('/');
     const arr = [];
-    console.log('remainder:', remainder);
     for (const segment of remainder) {
       arr.push(segment);
       this.tree.open(arr.join('/'));

@@ -17,7 +17,7 @@ export class ContentService {
     this.state.reset$.subscribe(() => this.lookup.clear());
   }
 
-  findBySha(path: string): Observable<string> {
+  findByPath(path: string): Observable<string> {
     const existing = this.lookup.get(path);
     if (!existing) {
       return this.state.repository$.pipe(

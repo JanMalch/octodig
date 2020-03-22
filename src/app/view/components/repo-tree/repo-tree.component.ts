@@ -73,7 +73,6 @@ export class RepoTreeComponent implements OnInit, OnChanges {
           this.treeService.openingRequests.forEach(path => {
             const identifier = encodeURIComponent(path);
             const found = this.treeControl.dataNodes.find(node => node.item === identifier);
-            console.log(path, ':', found);
             if (found.expandable) {
               this.treeControl.expand(found);
             } else {
