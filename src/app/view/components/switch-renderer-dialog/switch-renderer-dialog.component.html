@@ -1,0 +1,28 @@
+<header>
+  <mat-form-field appearance="outline" color="accent" floatLabel="always">
+    <mat-icon class="mat-hint" svgIcon="magnify"></mat-icon>
+    <input matInput (input)="onQueryChange(input.value)" #input placeholder="Filter by name and file extensions ..." />
+    <mat-label>Mode</mat-label>
+  </mat-form-field>
+</header>
+
+<mat-divider></mat-divider>
+
+<div id="languages">
+  <mat-selection-list #modes [multiple]="false" dense>
+    <mat-list-option
+      *ngFor="let option of options$ | async; trackBy: trackByFn"
+      #opt="matListOption"
+      (click)="onSelect(option)"
+      [value]="option"
+    >
+      <mat-icon
+        mat-list-icon
+        class="mat-hint"
+        [svgIcon]="option.icon != null ? option.icon : opt.selected ? 'radiobox-marked' : 'radiobox-blank'"
+        [color]="opt.selected ? 'accent' : undefined"
+      ></mat-icon>
+      {{ option.name }}
+    </mat-list-option>
+  </mat-selection-list>
+</div>
