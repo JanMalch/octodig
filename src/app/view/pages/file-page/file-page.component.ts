@@ -23,6 +23,21 @@ const emptyState: FilePageState = {
   content: null
 };
 
+function determineName(type: RendererType, detectedMode?: any): string | null {
+  switch (type) {
+    case 'codemirror':
+      return detectedMode.name;
+    case 'image':
+      return 'Image';
+    case 'table':
+      return 'Table';
+    case 'marked':
+      return 'Markdown (rendered)';
+    default:
+      return null;
+  }
+}
+
 function determineRenderer(path: string): Renderer {
   const detectedMode = CodeMirror.findModeByFileName(path);
   let type: RendererType = null;
@@ -35,22 +50,7 @@ function determineRenderer(path: string): Renderer {
   } else {
     type = 'codemirror';
   }
-  let name = '?';
-  switch (type) {
-    case 'codemirror':
-      name = detectedMode.name;
-      break;
-    case 'image':
-      name = 'Image';
-      break;
-    case 'table':
-      name = 'Table';
-      break;
-    case 'marked':
-      name = 'Markdown (rendered)';
-      break;
-  }
-  return { type, mode: detectedMode, name };
+  return { type, mode: detectedMode, name: determineName(type, detectedMode) };
 }
 
 function updateContentForRenderer(renderer: Renderer, content: string | null, path: string, repo: Repository): string | null {
