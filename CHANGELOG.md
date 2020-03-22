@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.13](https://github.com/JanMalch/octodig/compare/v0.0.12...v0.0.13) (2020-03-22)
+
+### Bug Fixes
+
+- use plainTextMode as fallback ([64fd4af](https://github.com/JanMalch/octodig/commit/64fd4af4b027f6c4693dbaabff07347b2b13461d))
+
 ### [0.0.12](https://github.com/JanMalch/octodig/compare/v0.0.11...v0.0.12) (2020-03-22)
 
 ### Bug Fixes
