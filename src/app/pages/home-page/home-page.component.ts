@@ -32,7 +32,7 @@ export class HomePageComponent implements OnInit {
 
   ngOnInit() {
     this.state.set(null); // TODO: sinnvoll?
-    this.isLoggedIn$ = this.auth.user$.pipe(map(Boolean), startWith(true));
+    this.isLoggedIn$ = this.auth.token$.pipe(map(Boolean), startWith(true)); // TODO: user$?
     this.title.setTitle('octodig');
   }
 
