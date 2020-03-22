@@ -14,7 +14,7 @@
   <div id="repo-actions">
     <div><!-- TODO: put error messages --></div>
     <button mat-flat-button [disabled]="repoForm.invalid || loading" color="primary" type="submit" matRipple matRippleUnbounded>
-      <mat-icon [svgIcon]="loading ? 'loading' : 'compass'" [class.mdi-spin]="loading"></mat-icon>
+      <mat-icon svgIcon="compass" [class.mdi-spin]="loading"></mat-icon>
       START DIGGING
     </button>
   </div>

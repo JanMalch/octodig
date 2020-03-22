@@ -45,7 +45,7 @@
     "@angular/platform-browser-dynamic": "~9.0.2",
     "@angular/router": "~9.0.2",
     "@ctrl/ngx-codemirror": "3.0.0",
-    "@mdi/angular-material": "^4.9.95",
+    "@mdi/angular-material": "^5.0.45",
     "@ngneat/until-destroy": "^7.1.0",
     "codemirror": "5.51.0",
     "comparing": "0.0.3",

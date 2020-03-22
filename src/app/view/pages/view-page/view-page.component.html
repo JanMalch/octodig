@@ -18,7 +18,7 @@
           class="mat-button-nowrap"
         >
           {{ repo.owner }}/{{ repo.name }}/{{ repo.branch }}
-          <mat-icon svgIcon="github-circle"></mat-icon>
+          <mat-icon svgIcon="github"></mat-icon>
         </a>
       </mat-toolbar>
       <app-repo-tree [repo]="repo" [tree]="tree$ | async" [rootItems]="rootItems$ | async" (selectFile)="closeOnMobile()"></app-repo-tree>
