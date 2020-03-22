@@ -76,7 +76,9 @@ function stripMdi() {
         'battery-70',
         'battery-80',
         'battery-90',
-        'battery'
+        'battery',
+        'share-variant',
+        'content-copy'
       ])
     )
     .pipe(dest(`dist/octodig/assets/`));

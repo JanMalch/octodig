@@ -1,38 +1,52 @@
-<span>{{ info.path }}</span>
-<span>{{ info.size | formatBytes }}</span>
+<code>{{ info.path }}</code>
+<code>{{ info.size | formatBytes }}</code>
 
-<div id="footer-actions">
-  <button disabled mat-button>
+<ng-container *ngIf="!(isHandset$ | async); else mobileTmpl">
+  <button mat-button (click)="switchLanguage()" id="language-switch">
     <mat-icon svgIcon="code-tags-check"></mat-icon>
-    Switch Language
+    <code>{{ renderer.name }}</code>
   </button>
-  <a mat-button [href]="info | githubLink" rel="noopener">
-    <mat-icon svgIcon="github-circle"></mat-icon>
-    Open on GitHub</a
-  >
-  <a mat-button [href]="info | rawContentLink" rel="noopener">
-    <mat-icon svgIcon="code-braces"></mat-icon>
-    View raw content</a
-  >
-</div>
 
-<div id="footer-mobile-menu">
-  <button mat-icon-button [matMenuTriggerFor]="menu">
-    <mat-icon svgIcon="dots-vertical"></mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <button disabled mat-menu-item>
-      <mat-icon svgIcon="code-tags-check"></mat-icon>
-      Switch Language
+  <div id="footer-actions">
+    <button mat-button (click)="share()">
+      <mat-icon [svgIcon]="isShareSupported ? 'share-variant' : 'content-copy'"></mat-icon>
+      {{ isShareSupported ? 'Share' : 'Copy' }} link
     </button>
-    <mat-divider></mat-divider>
-    <a mat-menu-item [href]="info | githubLink" rel="noopener">
-      <mat-icon svgIcon="github-circle"></mat-icon>
+
+    <a mat-button [href]="info | githubLink" rel="noopener">
+      <mat-icon svgIcon="github"></mat-icon>
       Open on GitHub</a
     >
-    <a mat-menu-item [href]="info | rawContentLink" rel="noopener">
+    <a mat-button [href]="info | rawContentLink" rel="noopener">
       <mat-icon svgIcon="code-braces"></mat-icon>
       View raw content</a
     >
-  </mat-menu>
-</div>
+  </div>
+</ng-container>
+
+<ng-template #mobileTmpl>
+  <div id="footer-mobile-menu">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon svgIcon="dots-vertical"></mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="switchLanguage()">
+        <mat-icon svgIcon="code-tags-check"></mat-icon>
+        <code>{{ renderer.name }}</code>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="share()">
+        <mat-icon [svgIcon]="isShareSupported ? 'share-variant' : 'content-copy'"></mat-icon>
+        {{ isShareSupported ? 'Share' : 'Copy' }} link
+      </button>
+      <a mat-menu-item [href]="info | githubLink" rel="noopener">
+        <mat-icon svgIcon="github"></mat-icon>
+        Open on GitHub</a
+      >
+      <a mat-menu-item [href]="info | rawContentLink" rel="noopener">
+        <mat-icon svgIcon="code-braces"></mat-icon>
+        View raw content</a
+      >
+    </mat-menu>
+  </div>
+</ng-template>
