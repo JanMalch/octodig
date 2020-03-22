@@ -16,6 +16,7 @@
     "prettier": "prettier --write src/**/*.{ts,html,css,scss,md,yaml,yml}",
     "prerelease": "gulp preRelease && git add src/index.html",
     "release": "standard-version --commit-all",
+    "postrelease": "git push --follow-tags origin master",
     "// - DOCS & TOOLS": "exit -1",
     "preanalyze": "ng build --prod --namedChunks=true --stats-json",
     "analyze": "npx webpack-bundle-analyzer dist/octodig/stats-es2015.json",
