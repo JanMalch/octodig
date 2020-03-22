@@ -20,6 +20,7 @@ import { FormatBytesPipe, GithubLinkPipe, ItemInfoByShaPipe, MinsDiffPipe, Opene
 import { ScrollRestorationService } from './scroll-restoration.service';
 
 import { ViewRoutingModule } from './view-routing.module';
+import { SwitchRendererDialogComponent } from './components/switch-renderer-dialog/switch-renderer-dialog.component';
 
 @NgModule({
   declarations: [
@@ -39,10 +40,11 @@ import { ViewRoutingModule } from './view-routing.module';
     GithubLinkPipe,
     RawContentLinkPipe,
     MinsDiffPipe,
-    ItemInfoByShaPipe
+    ItemInfoByShaPipe,
+    SwitchRendererDialogComponent
   ],
   imports: [CommonModule, ViewRoutingModule, FormsModule, MaterialModule, CodemirrorModule, MarkdownModule.forChild()],
-  entryComponents: [RateLimitReachedComponent],
+  entryComponents: [RateLimitReachedComponent, SwitchRendererDialogComponent],
   providers: [ScrollRestorationService]
 })
 export class ViewModule {}

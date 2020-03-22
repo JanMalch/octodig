@@ -1,13 +1,13 @@
-<ng-container *ngIf="data$ | async as data">
-  <app-file-renderer
-    *ngIf="data.file.renderer"
-    [value]="data.file.value"
-    [renderer]="data.file.renderer"
-    [mode]="data.file.mode"
-  ></app-file-renderer>
-  <div id="no-file-opened" *ngIf="data.file.renderer == null && (fileLoading$ | async) !== true">
+<ng-container *ngIf="state$ | async as state">
+  <app-file-renderer [value]="state.content" [renderer]="state.renderer.type" [mode]="state.renderer.mode"></app-file-renderer>
+  <div id="no-file-opened" *ngIf="state.renderer == null && (fileLoading$ | async) !== true">
     <img src="https://42f2671d685f51e10fc6-b9fcecea3e50b3b59bdc28dead054ebc.ssl.cf5.rackcdn.com/illustrations/void_3ggu.svg" />
     <i class="mat-hint">You are staring into the void ...</i>
   </div>
-  <app-file-footer *ngIf="data.file.renderer" [info]="data.info"></app-file-footer>
+  <app-file-footer
+    *ngIf="state.content"
+    [info]="state.item"
+    [renderer]="state.renderer"
+    (rendererChange)="renderer$.next($event)"
+  ></app-file-footer>
 </ng-container>

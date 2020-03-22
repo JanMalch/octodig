@@ -117,6 +117,10 @@ markdown {
   font-style: normal;
 }
 
+.cdk-overlay-pane.p-0 .mat-dialog-container {
+  padding: 0;
+}
+
 b,
 strong {
   font-weight: 500;
