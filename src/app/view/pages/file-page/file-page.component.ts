@@ -40,8 +40,8 @@ function determineName(type: RendererType, detectedMode?: any): string | null {
 
 function determineRenderer(path: string): Renderer {
   const detectedMode = CodeMirror.findModeByFileName(path);
-  let type: RendererType = null;
-  if (detectedMode.mode === 'gfm' || detectedMode.mode === 'markdown') {
+  let type: RendererType;
+  if (detectedMode != null && (detectedMode.mode === 'gfm' || detectedMode.mode === 'markdown')) {
     type = 'marked';
   } else if (['jpg', 'png'].some(ending => path.endsWith(ending))) {
     type = 'image';
