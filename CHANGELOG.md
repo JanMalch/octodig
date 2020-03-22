@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.12](https://github.com/JanMalch/octodig/compare/v0.0.11...v0.0.12) (2020-03-22)
+
+### Bug Fixes
+
+- add null check when determining renderer ([7eb9dd7](https://github.com/JanMalch/octodig/commit/7eb9dd7d4b8103f544cf700dc1688f623f205e29))
+
 ### [0.0.11](https://github.com/JanMalch/octodig/compare/v0.0.10...v0.0.11) (2020-03-22)
 
 ### Bug Fixes
