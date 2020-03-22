@@ -27,9 +27,9 @@ export class SwitchRendererDialogComponent implements AfterViewInit {
 
   readonly options$ = new BehaviorSubject<RendererWithIcon[]>(this.allOptions);
 
-  readonly trackByFn: TrackByFunction<RendererWithIcon> = (index, item) => `${item.type}_${item.name}`;
-
   @ViewChild('modes') selectionList: MatSelectionList;
+
+  readonly trackByFn: TrackByFunction<RendererWithIcon> = (index, item) => `${item.type}_${item.name}`;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) private currentRenderer: Renderer,
@@ -37,7 +37,7 @@ export class SwitchRendererDialogComponent implements AfterViewInit {
   ) {}
 
   ngAfterViewInit(): void {
-    const rendererId = (renderer: Renderer) => `${renderer.type}_${renderer.type == 'codemirror' ? renderer.mode.name : 'null'}`;
+    const rendererId = (renderer: Renderer) => `${renderer.type}_${renderer.type === 'codemirror' ? renderer.mode.name : 'null'}`;
     const currentId = rendererId(this.currentRenderer);
     const selected = this.selectionList.options.toArray().find(option => currentId === rendererId(option.value));
     Promise.resolve().then(() => {

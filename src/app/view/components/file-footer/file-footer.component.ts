@@ -19,7 +19,7 @@ export class FileFooterComponent implements OnInit {
   @Input() renderer: Renderer;
   @Output() rendererChange = new EventEmitter<Renderer>();
 
-  isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(map(result => result.matches));
+  isNotHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset).pipe(map(result => !result.matches));
 
   isShareSupported = !!(navigator as any).share;
 
