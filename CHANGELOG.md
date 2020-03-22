@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.10](https://github.com/JanMalch/octodig/compare/v0.0.9...v0.0.10) (2020-03-22)
+
+### Features
+
+- switch renderer ([#7](https://github.com/JanMalch/octodig/issues/7)) ([da9b5c8](https://github.com/JanMalch/octodig/commit/da9b5c8b309d4fe32efce8c9561a0c280098585f))
+
+### Bug Fixes
+
+- update and fix icons ([#5](https://github.com/JanMalch/octodig/issues/5)) ([767d4c9](https://github.com/JanMalch/octodig/commit/767d4c96b6dd234256ba4462740ae947e2b8ad18))
+- use token to determine logged-in state ([e4a5084](https://github.com/JanMalch/octodig/commit/e4a5084304e54f89fb030850bb8ccf51d69c4328))
+
 ### [0.0.9](https://github.com/JanMalch/octodig/compare/v0.0.8...v0.0.9) (2020-03-21)
 
 ### Bug Fixes
