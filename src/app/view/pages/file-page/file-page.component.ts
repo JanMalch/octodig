@@ -23,10 +23,16 @@ const emptyState: FilePageState = {
   content: null
 };
 
+const plainTextMode = {
+  name: 'Plain Text',
+  mime: 'text/plain',
+  mode: 'null'
+};
+
 function determineName(type: RendererType, detectedMode?: any): string | null {
   switch (type) {
     case 'codemirror':
-      return detectedMode.name;
+      return detectedMode != null ? detectedMode.name : plainTextMode.name;
     case 'image':
       return 'Image';
     case 'table':
@@ -39,9 +45,9 @@ function determineName(type: RendererType, detectedMode?: any): string | null {
 }
 
 function determineRenderer(path: string): Renderer {
-  const detectedMode = CodeMirror.findModeByFileName(path);
+  const detectedMode = CodeMirror.findModeByFileName(path) || plainTextMode;
   let type: RendererType;
-  if (detectedMode != null && (detectedMode.mode === 'gfm' || detectedMode.mode === 'markdown')) {
+  if (detectedMode.mode === 'gfm' || detectedMode.mode === 'markdown') {
     type = 'marked';
   } else if (['jpg', 'png'].some(ending => path.endsWith(ending))) {
     type = 'image';
