@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.14](https://github.com/JanMalch/octodig/compare/v0.0.13...v0.0.14) (2020-03-24)
+
+### Features
+
+- encode branches to work with slashes ([#8](https://github.com/JanMalch/octodig/issues/8)) ([177d77b](https://github.com/JanMalch/octodig/commit/177d77bea9d8bdf6c7ec20806a87693ceb850695))
+
 ### [0.0.13](https://github.com/JanMalch/octodig/compare/v0.0.12...v0.0.13) (2020-03-22)
 
 ### Bug Fixes
