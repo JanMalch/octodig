@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { StateService } from '../github/state.service';
-import { ViewModule } from './view.module';
 
 export interface ScrollInfo {
   left: 0;

@@ -2,8 +2,7 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { ChangeDetectionStrategy, Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { Observable } from 'rxjs';
-import { filter, map, mergeMap, shareReplay, take } from 'rxjs/operators';
-import { DataLookupService } from '../../../github/contents/data-lookup.service';
+import { map, shareReplay, take } from 'rxjs/operators';
 import { TreeService } from '../../../github/contents/tree.service';
 import { StateService } from '../../../github/state.service';
 

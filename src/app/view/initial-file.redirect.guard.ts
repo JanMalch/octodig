@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { filter, first, map, mapTo, pluck, switchMap, tap } from 'rxjs/operators';
+import { first, map, pluck, switchMap, tap } from 'rxjs/operators';
 import { ApiService } from '../github/contents/api.service';
 import { DataLookupService } from '../github/contents/data-lookup.service';
 import { TreeService } from '../github/contents/tree.service';

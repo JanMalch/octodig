@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { first, mergeMap, tap } from 'rxjs/operators';
-import { ViewModule } from '../../view/view.module';
 import { StateService } from '../state.service';
 import { BASE_PATH } from '../tokens';
 

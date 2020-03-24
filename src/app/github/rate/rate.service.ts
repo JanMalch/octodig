@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Inject, Injectable, NgZone } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { switchMap, throttleTime } from 'rxjs/operators';
 import { RateLimitReachedComponent } from '../../view/components/rate-limit-reached/rate-limit-reached.component';
 import { BASE_PATH } from '../tokens';
