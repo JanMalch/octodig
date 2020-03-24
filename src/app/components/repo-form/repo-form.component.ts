@@ -1,9 +1,8 @@
-import { animate, style, transition, trigger } from '@angular/animations';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { Repository, StateService } from '../../github/state.service';
+import { StateService } from '../../github/state.service';
 
 @UntilDestroy()
 @Component({
@@ -32,7 +31,7 @@ export class RepoFormComponent implements OnInit {
     if (this.repoForm.valid) {
       this.loading = true;
       const { value } = this.repoForm;
-      this.router.navigateByUrl(`/v/${value.owner}/${value.name}/${value.branch}`);
+      this.router.navigateByUrl(`/v/${value.owner}/${value.name}/${encodeURIComponent(value.branch)}`);
     }
   }
 }

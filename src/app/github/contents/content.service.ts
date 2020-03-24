@@ -26,7 +26,7 @@ export class ContentService {
           this.http.get<string>(`${this.bp}repos/${repo.owner}/${repo.name}/contents/${path}`, {
             responseType: 'text' as 'json',
             params: {
-              ref: repo.branch
+              ref: decodeURIComponent(repo.branch)
             },
             headers: {
               Accept: 'application/vnd.github.VERSION.raw'

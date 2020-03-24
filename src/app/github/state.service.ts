@@ -37,9 +37,13 @@ export class StateService {
       name: next.name || now.name,
       branch: next.branch || now.branch || 'master'
     };
+    if (normalized.branch.includes('/')) {
+      normalized.branch = encodeURIComponent(normalized.branch);
+    }
     if (areEqualsRepos(normalized, now)) {
       return;
     }
     this.repository$.next(normalized);
+    console.log('normalized:', normalized);
   }
 }
