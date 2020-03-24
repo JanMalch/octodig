@@ -13,14 +13,22 @@ import {
   RateComponent,
   RateLimitReachedComponent,
   RepoTreeComponent,
+  SwitchRendererDialogComponent,
   TopNavComponent
 } from './components';
 import { FilePageComponent, ViewPageComponent } from './pages';
-import { FormatBytesPipe, GithubLinkPipe, ItemInfoByShaPipe, MinsDiffPipe, OpenedFilesMaxWidthPipe, RawContentLinkPipe } from './pipes';
+import {
+  DecodeURIComponentPipe,
+  FormatBytesPipe,
+  GithubLinkPipe,
+  ItemInfoByShaPipe,
+  MinsDiffPipe,
+  OpenedFilesMaxWidthPipe,
+  RawContentLinkPipe
+} from './pipes';
 import { ScrollRestorationService } from './scroll-restoration.service';
 
 import { ViewRoutingModule } from './view-routing.module';
-import { SwitchRendererDialogComponent } from './components/switch-renderer-dialog/switch-renderer-dialog.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +49,8 @@ import { SwitchRendererDialogComponent } from './components/switch-renderer-dial
     RawContentLinkPipe,
     MinsDiffPipe,
     ItemInfoByShaPipe,
-    SwitchRendererDialogComponent
+    SwitchRendererDialogComponent,
+    DecodeURIComponentPipe
   ],
   imports: [CommonModule, ViewRoutingModule, FormsModule, MaterialModule, CodemirrorModule, MarkdownModule.forChild()],
   entryComponents: [RateLimitReachedComponent, SwitchRendererDialogComponent],

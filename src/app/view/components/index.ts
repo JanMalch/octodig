@@ -7,3 +7,4 @@ export * from './rate/rate.component';
 export * from './repo-tree/repo-tree.component';
 export * from './top-nav/top-nav.component';
 export * from './rate-limit-reached/rate-limit-reached.component';
+export * from './switch-renderer-dialog/switch-renderer-dialog.component';

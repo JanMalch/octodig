@@ -17,7 +17,7 @@
           mat-button
           class="mat-button-nowrap"
         >
-          {{ repo.owner }}/{{ repo.name }}/{{ repo.branch }}
+          {{ repo.owner }}/{{ repo.name }}/{{ repo.branch | decodeURIComponent }}
           <mat-icon svgIcon="github"></mat-icon>
         </a>
       </mat-toolbar>

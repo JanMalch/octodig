@@ -60,7 +60,7 @@ export class ApiService {
       mergeMapNonNull(repo =>
         this.http.get<any>(`${this.bp}repos/${repo.owner}/${repo.name}`, {
           params: {
-            ref: repo.branch || 'master'
+            ref: decodeURIComponent(repo.branch || 'master')
           }
         })
       ),
@@ -71,7 +71,7 @@ export class ApiService {
       mergeMapNonNull(repo =>
         this.http.get<FileItem>(`${this.bp}repos/${repo.owner}/${repo.name}/readme`, {
           params: {
-            ref: repo.branch || 'master'
+            ref: decodeURIComponent(repo.branch || 'master')
           }
         })
       ),
@@ -80,7 +80,7 @@ export class ApiService {
     );
 
     this.branchInfo$ = this.state.repository$.pipe(
-      mergeMapNonNull(repo => this.http.get<any>(`${this.bp}repos/${repo.owner}/${repo.name}/branches/${repo.branch}`)),
+      mergeMapNonNull(repo => this.http.get<any>(`${this.bp}repos/${repo.owner}/${repo.name}/branches/${decodeURIComponent(repo.branch)}`)),
       tap(data => this.dataLookup.collect(data)),
       shareReplay(1)
     );
