@@ -44,6 +44,5 @@ export class StateService {
       return;
     }
     this.repository$.next(normalized);
-    console.log('normalized:', normalized);
   }
 }
