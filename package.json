@@ -48,7 +48,7 @@
     "@ctrl/ngx-codemirror": "3.0.0",
     "@mdi/angular-material": "^5.0.45",
     "@ngneat/until-destroy": "^7.1.0",
-    "codemirror": "5.53.2",
+    "codemirror": "5.54.0",
     "comparing": "0.0.3",
     "firebase": "^7.8.1",
     "ngx-markdown": "^8.2.2",
