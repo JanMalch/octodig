@@ -32,6 +32,24 @@ h1 {
   }
 }
 
+#maintenance-notice {
+  background-color: rgba(#e53935, 0.2);
+  border: 1px solid #e53935;
+  color: white;
+  padding: 12px;
+  margin: 0 0 16px;
+  border-radius: 4px;
+
+  a {
+    color: #ff5c95;
+    font-weight: 500;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
 #intro {
   flex: 3;
   padding-right: 3em;

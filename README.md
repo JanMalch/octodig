@@ -1,3 +1,5 @@
+**This project is no longer maintained. Consider using [GitHub's Codespaces](https://github.com/features/codespaces) instead.**
+
 # octodig
 
 ![Deploy on Firebase](https://github.com/JanMalch/octodig/workflows/Deploy%20on%20Firebase/badge.svg)
